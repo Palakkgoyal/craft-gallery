@@ -1,7 +1,7 @@
 .hero_container {
     max-width: 1200px;
     text-align: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin-inline: auto;
     display: flex;
     justify-content: center;
