@@ -7,6 +7,7 @@ import ContactComponent from "./Contact/Contact";
 import GalleryComponent from "./Gallery/GalleryComponent";
 import ProfileComponent from "./Profile/ProfileComponent";
 import ProductComponent from "./Product/ProductComponent";
+import BuyNowComponent from "./BuyNow/BuyNowComponent";
 
 export {
     Navbar,
@@ -18,4 +19,5 @@ export {
     GalleryComponent,
     ProfileComponent,
     ProductComponent,
+    BuyNowComponent,
 }
