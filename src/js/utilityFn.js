@@ -1,7 +1,8 @@
 import { toast } from 'react-toastify'; // For validateImg() function
+import { useState, useRef, useEffect } from 'react'; // For useProductData() function
 
 // ----------------- For uploadImage() function ----------------- 
-import { storage } from "../lib/firebase"
+import { storage, db } from "../lib/firebase"
 import { v4 } from "uuid"
 import {
   ref,
@@ -42,4 +43,29 @@ async function uploadImage(img) {
   }
 }
 
-export { validateImg, uploadImage }
+function useProductData(uid) {
+  const [productData, setProductData] = useState({
+    images: [],
+  })
+  const isFetchingRef = useRef(true);
+
+  useEffect(() => {
+    const workRef = db.collection("work").doc(uid);
+
+    const unsubscribe = workRef.onSnapshot((doc) => {
+      if (doc.exists) {
+        setProductData(doc.data());
+      } else {
+        setProductData(null);
+      }
+
+      isFetchingRef.current = false;
+    });
+
+    return unsubscribe
+  }, [uid])
+
+  return [productData, setProductData, isFetchingRef.current]
+}
+
+export { validateImg, uploadImage, useProductData }

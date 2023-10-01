@@ -5,6 +5,7 @@ import Contact from "./Contact/Contact";
 import Gallery from "./Gallery/Gallery";
 import Profile from "./Profile/Profile";
 import Product from "./Product/Product";
+import BuyNow from "./BuyNow/BuyNow";
 
 export {
     Layout,
@@ -14,4 +15,5 @@ export {
     Gallery,
     Profile,
     Product,
+    BuyNow,
 }

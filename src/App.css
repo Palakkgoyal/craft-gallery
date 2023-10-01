@@ -62,6 +62,25 @@
     border-radius: 15px;
 }
 
+.img_sizing {
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: inherit;
+}
+
+.popup {
+    transition: 0.2s ease-in-out;
+}
+
+.popup:hover {
+    transform: scale(1.1);
+}
+
+.popup:active {
+    transform: scale(0.8);
+}
 
 @media (max-width: 800px){
     .display_img_container {
