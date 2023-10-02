@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import handleChange from "../../js/utilityFn"
+import ActionBtn from '../ActionBtn/ActionBtn'
 
 const Address = () => {
     const [addressData, setAddressData] = useState({
@@ -14,12 +15,12 @@ const Address = () => {
         a_state: "",
     })
     return (
-        <div className="address_container">
-            <div className="address_header">
-                <h2>Address</h2>
-            </div>
+        <form action="" className="address_form_container">
+            <div className="address_container">
+                <div className="address_header">
+                    <h2>Address</h2>
+                </div>
 
-            <form action="" className="address_form_container">
                 <div className="address_field_container">
                     <label htmlFor="a_full_name">
                         Full name (First and Last name)
@@ -43,7 +44,7 @@ const Address = () => {
                         type="tel"
                         id="a_mobile_number"
                         name="a_mobile_number"
-                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        pattern="[0-9]{10}"
                         maxLength={10}
                         minLength={10}
                         required
@@ -139,8 +140,9 @@ const Address = () => {
                         onChange={(e) => handleChange(e, setAddressData)}
                     />
                 </div>
-            </form>
-        </div>
+            </div>
+            <ActionBtn text="Continue to Payment" type="submit" />
+        </form>
     )
 }
 

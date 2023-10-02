@@ -9,8 +9,6 @@ const ProductComponent = () => {
   const { product_id } = useParams();
   const [productData, setProductData, isFetchingRef] = useProductData(product_id)
   const [displayImg, setDisplayImg] = useState(productData.images[0])
-  const navigate = useNavigate();
-
 
   useEffect(() => {
     setDisplayImg(productData.images[0])
