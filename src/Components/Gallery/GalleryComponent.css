@@ -38,6 +38,8 @@
 
 .gallery_image_container {
     position: relative;
+    min-width: 200px;
+    min-height: 200px;
 }
 
 .gallery_image {
@@ -64,6 +66,20 @@
     border-radius: 5px;
     fill: red;
     
+}
+
+@media (max-width: 600px) {
+    .gallery_image_container {
+        min-width: 100px;
+        min-height: 100px;
+    }
+
+    .display_img_set_fav_btn {
+        font-size: 20px;
+        padding: 3px;
+        top: 10px;
+        right: 10px;
+    }
 }
 
 

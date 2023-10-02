@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { auth, db } from "../../lib/firebase"
 import "./ProfileComponent.css"
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from "react-router-dom"
+import { auth, db } from "../../lib/firebase"
+import ActionBtn from "../ActionBtn/ActionBtn"
 
 const ProfileComponent = () => {
-    const [data, setData] = useFetchData();
+    const navigate = useNavigate()
 
-    const name = data?.name || "",
-        photoURL = data?.photoURL || "",
-        email = data?.email || "",
-        number = data?.contactNumber || "",
-        address = data?.address || "";
-
-    function handleChange(event) {
-        setData(prevFormData => {
-            return {
-                ...prevFormData,
-                [event.target.name]: event.target.value
-            }
-        })
-    }
+    const { displayName, email, photoURL } = auth?.currentUser
 
     function handleLogOut() {
         auth.signOut()
@@ -32,78 +21,45 @@ const ProfileComponent = () => {
 
     return (
         <div className="profile_container">
-            <button className="" onClick={handleLogOut}>Log Out</button>
-            <div>
-                <img src={photoURL} alt="" className="profile_image" />
+            <div className="user_details_container">
+                <div className="profile_image_container">
+                    <img
+                        src={photoURL}
+                        alt={displayName}
+                        className="img_sizing"
+                    />
+                </div>
+                <div className="user_text_details_container">
+                    <h2 className="user_name">
+                        {displayName}
+                    </h2>
+                    <p className="user_email">
+                        {email}
+                    </p>
+                    <div>
+                        <ActionBtn text="Logout" />
+                    </div>
+                </div>
             </div>
-            <div className="input_main_container">
-                <div className="input_container">
-                    <label
-                        htmlFor="name"
-                        className="sub_para_styling profile_form_label"
-                    >
-                        Name
-                    </label>
-                    <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        disabled
-                        onChange={handleChange}
-                        value={name}
-                        className="form_field profile_form_field"
-                    />
+
+            <div>
+                <button
+                    className="wishlist_btn popup"
+                    onClick={() => navigate("/wishlist")}
+                >
+                    See Your Wishlist
+                </button>
+            </div>
+            <div className="orders_main_container">
+                <div>
+                    <h2 className="profile_heading">
+                        Your Orders
+                    </h2>
                 </div>
-                <div className="input_container">
-                    <label
-                        htmlFor="email"
-                        className="sub_para_styling profile_form_label"
-                    >
-                        Email
-                    </label>
-                    <input
-                        type="text"
-                        name="email"
-                        id="email"
-                        disabled
-                        onChange={handleChange}
-                        value={email}
-                        className="form_field profile_form_field"
-                    />
-                </div>
-                <div className="input_container">
-                    <label
-                        htmlFor="contactNumber"
-                        className="sub_para_styling profile_form_label"
-                    >
-                        Contact Number
-                    </label>
-                    <input
-                        type="text"
-                        name="contactNumber"
-                        id="contactNumber"
-                        disabled
-                        onChange={handleChange}
-                        value={number}
-                        className="form_field profile_form_field"
-                    />
-                </div>
-                <div className="input_container">
-                    <label
-                        htmlFor="address"
-                        className="sub_para_styling profile_form_label"
-                    >
-                        Address
-                    </label>
-                    <input
-                        type="text"
-                        name="address"
-                        id="address"
-                        disabled
-                        onChange={handleChange}
-                        value={address}
-                        className="form_field profile_form_field"
-                    />
+                <div className="orders_list">
+                    <p className="nothing_in_order_note">
+                        You haven't ordered anything yet...
+                    </p>
                 </div>
             </div>
         </div>
@@ -113,21 +69,21 @@ const ProfileComponent = () => {
 export default ProfileComponent
 
 
-function useFetchData() {
-    const [data, setData] = useState({})
+// function useFetchData() {
+//     const [data, setData] = useState({})
 
-    useEffect(() => {
-        const unsubscribe = db.collection("users")
-            .doc(auth?.currentUser?.uid)
-            .onSnapshot((doc) => {
-                console.log("fetching")
-                setData(doc.data());
-            });
+//     useEffect(() => {
+//         const unsubscribe = db.collection("users")
+//             .doc(auth?.currentUser?.uid)
+//             .onSnapshot((doc) => {
+//                 console.log("fetching")
+//                 setData(doc.data());
+//             });
 
-        return () => {
-            unsubscribe(); // Unsubscribe from the Firebase listener.
-        };
-    }, [])
+//         return () => {
+//             unsubscribe(); // Unsubscribe from the Firebase listener.
+//         };
+//     }, [])
 
-    return [data, setData];
-}
+//     return [data, setData];
+// }

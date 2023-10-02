@@ -68,4 +68,20 @@ function useProductData(uid) {
   return [productData, setProductData, isFetchingRef.current]
 }
 
-export { validateImg, uploadImage, useProductData }
+function handleAddToFav(id,favArr, setFavArr) {
+  const tempArr = [...favArr, id]
+  setFavArr(tempArr)
+  localStorage.setItem("favArr", JSON.stringify(tempArr))
+}
+
+function handleRemoveFav(id, favArr, setFavArr) {
+  const idx = favArr.indexOf(id);
+  if (idx === -1) return;
+
+  const tempArr = [...favArr];
+  tempArr.splice(idx, 1);
+  setFavArr(tempArr)
+  localStorage.setItem("favArr", JSON.stringify(tempArr))
+}
+
+export { validateImg, uploadImage, useProductData, handleAddToFav, handleRemoveFav }

@@ -1,8 +1,27 @@
+.product_data_main_container {
+    position: relative;
+}
+
+.product_like_btn_container {
+    display: flex;
+    position: relative;
+    height: 40px;
+    margin-top: 10vh;
+}
+
+.product_like_btn {
+    position: relative !important;
+    top: 0;
+    right: 0;
+    margin-left: auto;
+}
+
 .product_data_container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-block: 10vh;
+    margin-bottom: 10vh;
+    margin-top: 15px;
     gap: 15px;
     position: relative;
     min-height: 65vh;
@@ -102,5 +121,11 @@
 
     .product_buy_btn {
         margin-top: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .product_like_btn {
+        font-size: 28px;
     }
 }
