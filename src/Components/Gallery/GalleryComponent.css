@@ -1,3 +1,7 @@
+.gallery_container {
+    position: relative;
+}
+
 .add_work_btn {
     display: block;
     margin: auto;
@@ -32,15 +36,34 @@
     fill: #2d2d2d;
 }
 
+.gallery_image_container {
+    position: relative;
+}
+
 .gallery_image {
     border: 1px solid rgb(165, 164, 164);
     box-shadow: 1px 1px 3px rgb(159, 159, 159), -1px -1px 5px rgb(199, 199, 199);
-    cursor: pointer;
     transition: all 0.2s ease-in-out;
+    user-select: none;
 }
 
 .gallery_image:hover {
     opacity: 0.7;
+}
+
+.display_img_set_fav_btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 9;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 5px;
+    box-sizing: content-box;
+    background: white;
+    border-radius: 5px;
+    fill: red;
+    
 }
 
 
@@ -52,7 +75,6 @@
 .add_art_sub_container {
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
     gap: 15px;
     position: relative;
 }
