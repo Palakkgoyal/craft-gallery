@@ -5,7 +5,7 @@ import isOwner from "../../js/Owner"
 import AddWork from "./AddWork"
 import Loader from "../Loader/Loader"
 import { useNavigate } from "react-router-dom"
-
+import { handleAddToFav, handleRemoveFav } from "../../js/utilityFn"
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 
 
@@ -21,21 +21,6 @@ const GalleryComponent = () => {
         const tempArr = localFavArr ? JSON.parse(localFavArr) : [];
         setFavArr(tempArr)
     }, [])
-
-    function handleAddToFav(id) {
-        setFavArr(prev => [...prev, id])
-        localStorage.setItem("favArr", JSON.stringify(favArr))
-    }
-
-    function handleRemoveFav(id) {
-        const idx = favArr.indexOf(id);
-        if (idx === -1) return;
-
-        const tempArr = [...favArr];
-        tempArr.splice(idx, 1);
-        setFavArr(tempArr)
-        localStorage.setItem("favArr", JSON.stringify(tempArr))
-    }
 
     return (
         <div className="gallery_container">
@@ -65,12 +50,12 @@ const GalleryComponent = () => {
                             />
                             {favArr.includes(doc.id) ? (
                                 <BsSuitHeartFill
-                                    onClick={() => handleRemoveFav(doc.id)}
+                                    onClick={() => handleRemoveFav(doc.id, favArr, setFavArr)}
                                     className="display_img_set_fav_btn popup"
                                 />
                             ) : (
                                 <BsSuitHeart
-                                    onClick={() => handleAddToFav(doc.id)}
+                                    onClick={() => handleAddToFav(doc.id, favArr, setFavArr)}
                                     className="display_img_set_fav_btn popup"
                                 />
                             )}

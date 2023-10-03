@@ -1,33 +1,84 @@
 .profile_container {
     margin-block: 10vh;
     display: flex;
-    border: 1px solid red;
     flex-direction: column;
     align-items: center;
     gap: 20px;
 }
 
-.profile_image {
-    border-radius: 50%;
-    width: 100px;
+.user_details_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(167, 165, 165);
+    max-width: 700px;
+    width: 100%;
 }
 
-.input_main_container {
+.profile_image_container {
+    width: 200px;
+    aspect-ratio: 1;
+    border-radius: 10px;
+}
+
+.user_text_details_container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
-.input_container {
-    display: flex;
-    flex-direction: column;
+.user_name {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 7px;
 }
 
-.profile_form_field {
-    width: 500px;
+.user_email {
+    font-size: 18px;
+    margin-bottom: 20px;
 }
 
-.profile_form_label {
-    margin-bottom: 0;
-    margin-top: 0;
+.wishlist_btn {
+    padding: 8px 15px;
+    background: rgb(224, 36, 36);
+    color: white;
+    border: none;
+    font-size: 19px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.orders_main_container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.profile_heading {
+    font-size: 40px;
+    font-weight: 600;
+    color: grey;
+}
+
+.orders_list {
+    margin-top: 20px;
+}
+
+.nothing_in_order_note {
+    text-align: center;
+}
+
+@media (max-width: 500px) {
+    .user_details_container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .profile_image_container {
+        width: 150px;
+    }
+    
+    .profile_heading {
+        font-size: 30px;
+    }
 }
