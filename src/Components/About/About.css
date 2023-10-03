@@ -19,8 +19,24 @@
     font-size: 30px;
 }
 
-.about_para {
+.about_para, .about_para_small {
     max-width: 60ch;
+}
+
+.about_para_small {
+    display: none;
+}
+
+.read_more_btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: rgb(127, 127, 251);
+    text-decoration: underline;
+}
+
+.read_more_btn:hover {
+    color: rgb(109, 109, 245);
 }
 
 @media (max-width: 850px) {
@@ -44,8 +60,18 @@
         max-width: 100%;
         font-size: 25px;
     }
-    .about_para {
+    .about_para, .about_para_small {
         max-width: 100%;
         margin-top: 1rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .about_para {
+        display: none;
+    }
+
+    .about_para_small  {
+        display: inline-block;
     }
 }
