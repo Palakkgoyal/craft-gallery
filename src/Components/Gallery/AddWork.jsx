@@ -10,19 +10,13 @@ const AddWork = () => {
     const [uploading, setUploading] = useState(false)
     const [imageUpload, setImageUpload] = useState([])
     const [isValidImage, setIsValidimage] = useState(true)
-    const [artData, setArtData] = useState({
-        artName: "",
-        artPrice: 0,
-        artDetails: "",
-        materialUsed: "",
-        dimensions: "",
-    })
+    const [artData, setArtData] = useState(initArtData)
 
-    const { artName, artPrice, artDetails, materialUsed, dimensions } = artData;
+    const { artName, artPrice, artDetails, materialUsed, dimensions, stripeProductId, category } = artData;
 
     function checkImg(e) {
         const images = e.target.files;
-        
+
         if (images.length > 4) {
             toast.error("Please select 4 or less images!", {
                 position: toast.POSITION.TOP_RIGHT
@@ -70,13 +64,7 @@ const AddWork = () => {
         // Add the document with an automatically generated ID
         workCollection.add(workData)
             .then((docRef) => {
-                setArtData({
-                    artName: "",
-                    artPrice: 0,
-                    artDetails: "",
-                    materialUsed: "",
-                    dimensions: "",
-                })
+                setArtData(initArtData)
                 setImageUpload([]);
                 imgUrlRef.current = null;
                 toast.success("Successfully work uploaded!", {
@@ -104,7 +92,7 @@ const AddWork = () => {
                         disabled={uploading}
                         multiple
                     />
-                   
+
                     <label htmlFor="add_art_file" className="">
                         <p className="add_art_img_label">+</p>
                     </label>
@@ -205,6 +193,45 @@ const AddWork = () => {
                             disabled={uploading}
                         />
                     </div>
+                    <div className="add_art_input_container">
+                        <label
+                            htmlFor="stripeProductId"
+                            className="sub_para_styling add_art_input_label"
+                        >
+                            Stripe Product Id
+                        </label>
+                        <input
+                            type="text"
+                            id="stripeProductId"
+                            name="stripeProductId"
+                            value={stripeProductId}
+                            onChange={(e) => handleChange(e, setArtData)}
+                            className="form_field add_art_input"
+                            maxLength={200}
+                            required
+                            disabled={uploading}
+                        />
+                    </div>
+                    <div className="add_art_input_container">
+                        <label
+                            htmlFor="category"
+                            className="sub_para_styling add_art_input_label"
+                        >
+                            Category
+                        </label>
+                        <select
+                            name="category"
+                            id="category"
+                            value={category}
+                            className="sub_para_styling add_art_input_label add_art_select_category"
+                            onChange={(e) => handleChange(e, setArtData)}
+                        >
+                            <option value="">-- Choose --</option>
+                            {resinItems.map((item) => (
+                                <option value={item}>{item}</option>
+                            ))}
+                        </select>
+                    </div>
                     <ActionBtn
                         text="Add Now"
                         onClick={async () => {
@@ -222,3 +249,38 @@ const AddWork = () => {
 
 export default AddWork
 
+
+const initArtData = {
+    artName: "",
+    artPrice: 0,
+    artDetails: "",
+    materialUsed: "",
+    dimensions: "",
+    stripeProductId: "",
+    category: "",
+}
+
+const resinItems = [
+    "Resin frames",
+    "Resin jewellery",
+    "Resin Keychain",
+    "Resin Name stand",
+    "Resin Name plate",
+    "Resin Clock",
+    "Resin bookmark",
+    "Resin coaster",
+    "Resin tray",
+    "Resin Hair accessories",
+    "Resin phone case",
+    "Resin Tilak thali",
+    "Resin Rakhi's",
+    "Aesthetic Phone Case",
+    "Vintage glass frame",
+    "Gift hamper",
+    "Embroidery hoop",
+    "Wedding hoop",
+    "Photo hoop",
+    "Acrylic plaque",
+    "String Art"
+  ];
+  
