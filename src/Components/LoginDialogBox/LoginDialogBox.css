@@ -29,21 +29,34 @@
     transform: scale(1.1);
 }
 
-.auth_form_container {
+.fb_btn_container {
+    margin-top: 40px;
+}
+
+.sign_in_btn {
+    width: 240px;
+    font-size: 15px;
+    border: none;
+    background: #4267b2;
+    border: 1px solid #4267b2;
     display: flex;
-    flex-direction: column;
-    width: 100%;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
 }
 
-.auth_form_field {
-    /* width: 40vw; */
-    width: 100%;
-
-}
-
-.auth_label {
-    margin: 0;
-    font-size: 18px;
+.auth_icon {
+    padding-right: 10px;
+    border: 1px solid #4267b2;
+    border-right: none;
+    transform: scale(1.1);
+    fill: #4267b2;
+    padding-block: 15px;
+    padding-left: 15px;
+    background: white;
+    box-sizing: content-box;
 }
 
 .auth_google_btn_container {
@@ -51,22 +64,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-}
-
-.toggle_auth {
-    color: blue;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.auth_note {
-    margin-top: 20px;
-    align-self: flex-start;
-    font-size: 15px;
-}
-
-.toggle_auth:hover {
-    text-decoration: underline;
 }
 
 @media (max-width: 800px) {

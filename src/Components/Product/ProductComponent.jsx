@@ -1,8 +1,9 @@
 import "./ProductComponent.css"
-import React, { useEffect, useRef, useState } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
 import Loader from "../Loader/Loader"
 import ActionBtn from "../ActionBtn/ActionBtn";
+import { auth } from "../../lib/firebase";
 import { useProductData, handleAddToFav, handleRemoveFav } from "../../js/utilityFn";
 
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
@@ -12,6 +13,7 @@ const ProductComponent = () => {
   const [productData, setProductData, isFetchingRef] = useProductData(product_id)
   const [displayImg, setDisplayImg] = useState(productData.images[0])
   const [favArr, setFavArr] = useState([])
+  const user = auth.currentUser
 
   useEffect(() => {
     setDisplayImg(productData.images[0])

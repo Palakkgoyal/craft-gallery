@@ -37,7 +37,7 @@ const ProfileComponent = () => {
                         {email}
                     </p>
                     <div>
-                        <ActionBtn text="Logout" />
+                        <ActionBtn text="Logout" onClick={handleLogOut} />
                     </div>
                 </div>
             </div>

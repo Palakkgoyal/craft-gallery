@@ -1,105 +1,40 @@
-import React, { useState } from 'react'
 import "./LoginDialogBox.css"
-import ActionBtn from '../ActionBtn/ActionBtn'
 import GoogleButton from 'react-google-button'
 import { ImCross } from "react-icons/im";
-import { auth, db, googleProvider } from "../../lib/firebase";
+import { auth, db, googleProvider, fbProvider, twitterProvider } from "../../lib/firebase";
+
+import { FaFacebookF } from "react-icons/fa6";
 
 const LoginDialogBox = ({ handleShowForm }) => {
-  const [isSignUp, setIsSignUp] = useState(false)
-  const [formData, setFormData] = useState(
-    {name: "", email: "", password: ""}
-)
-
-function handleChange(event) {
-  setFormData(prevFormData => {
-      return {
-          ...prevFormData,
-          [event.target.name]: event.target.value
-      }
-  })
-}
 
   return (
     <div className="login_dialog_box_container">
-      <div>
-        <h2>
-          {isSignUp ? "Sign UP" : "Log In"}
-        </h2>
-        <ImCross onClick={handleShowForm} className="auth_close_icon" />
-      </div>
-      <form className="auth_form_container">
-        {isSignUp && (
-          <>
-            <label
-              htmlFor="email"
-              className="sub_para_styling auth_label"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              className="form_field auth_form_field"
-              placeholder="Enter your name"
-              onChange={handleChange}
-              value={formData.name}
-            />
-          </>
-        )}
-        <label
-          htmlFor="email"
-          className="sub_para_styling auth_label"
+      <h2>
+        SignUp/LogIn
+      </h2>
+      <ImCross onClick={handleShowForm} className="auth_close_icon" />
+      <div className="auth_google_btn_container fb_btn_container">
+        <button
+        className="sign_in_btn"
+          onClick={() => {
+            signInWithProvider(fbProvider)
+            handleShowForm()
+          }}
         >
-          Email
-        </label>
-        <input
-          type="email"
-          name="email"
-          className="form_field auth_form_field"
-          placeholder="Enter your email"
-          onChange={handleChange}
-          value={formData.email}
-        />
-        <label
-          htmlFor="password"
-          className="sub_para_styling auth_label"
-          style={{ marginTop: 0 }}
-        >
-          Password
-        </label>
-        <input
-          type="password"
-          name="password"
-          className="form_field auth_form_field"
-          placeholder="Enter your password"
-          onChange={handleChange}
-          value={formData.password}
-        />
-        <ActionBtn text="Submit" onClick={handleShowForm} />
-      </form>
-      <div>
-        <span></span>
-        <p>or</p>
-        <span></span>
+          <FaFacebookF className="auth_icon" />
+          <span>
+            Continue With Facebook
+          </span>
+        </button>
       </div>
       <div className="auth_google_btn_container">
         <GoogleButton
           onClick={() => {
-            signInWithGoogle()
+            signInWithProvider(googleProvider)
             handleShowForm()
           }}
         />
       </div>
-      <p className="auth_note">
-        {isSignUp? "Already have an account" : "New to MahiArts"}? {" "}
-        <span 
-        className="toggle_auth"
-        onClick={() => setIsSignUp(prev => !prev)}
-        >
-          {isSignUp? "LogIn" : "SignUp"}
-        </span>
-      </p>
     </div>
   )
 }
@@ -107,9 +42,9 @@ function handleChange(event) {
 export default LoginDialogBox
 
 
-function signInWithGoogle() {
+function signInWithProvider(provider) {
   auth
-    .signInWithPopup(googleProvider)
+    .signInWithPopup(provider)
     .then(async (val) => {
       const userRef = db.collection("users").where("uid", "==", val?.user?.uid);
       console.log("SignIn Successfull!")
