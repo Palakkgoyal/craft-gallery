@@ -10,7 +10,8 @@ import {
   Product,
   BuyNow,
   PrivacyPolicy,
-  ReturnPolicy
+  ReturnPolicy,
+  TermsOfServices,
 } from './Pages';
 import useAuthChange from './js/useAuthChange';
 import { ToastContainer } from 'react-toastify';
@@ -30,6 +31,7 @@ function App() {
             <Route path="gallery" element={<Gallery />} />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="return-policy" element={<ReturnPolicy />} />
+            <Route path="terms-of-services" element={<TermsOfServices />} />
             <Route path="gallery/:product_id" element={<Product />} />
             <Route path="buy-now/:product_id" element={<BuyNow />} />
             {user && (<Route path="profile" element={<Profile />} />)}
