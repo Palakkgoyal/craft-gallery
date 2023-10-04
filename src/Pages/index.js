@@ -9,6 +9,7 @@ import BuyNow from "./BuyNow/BuyNow";
 import PrivacyPolicy from "./OtherPages/PrivacyPolicy/PrivacyPolicy";
 import ReturnPolicy from "./OtherPages/ReturnPolicy/ReturnPolicy";
 import TermsOfServices from "./OtherPages/TermsOfServices/TermsOfServices";
+import WishList from "./WishList/WishList";
 
 export {
     Layout,
@@ -21,5 +22,6 @@ export {
     BuyNow,
     PrivacyPolicy,
     ReturnPolicy,
-    TermsOfServices
+    TermsOfServices,
+    WishList,
 }

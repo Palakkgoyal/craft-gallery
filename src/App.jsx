@@ -12,6 +12,7 @@ import {
   PrivacyPolicy,
   ReturnPolicy,
   TermsOfServices,
+  WishList,
 } from './Pages';
 import useAuthChange from './js/useAuthChange';
 import { ToastContainer } from 'react-toastify';
@@ -29,6 +30,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="gallery" element={<Gallery />} />
+            <Route path="wishList" element={<WishList />} />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="return-policy" element={<ReturnPolicy />} />
             <Route path="terms-of-services" element={<TermsOfServices />} />
