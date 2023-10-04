@@ -4,6 +4,8 @@ import "./Navbar.css"
 import { useState, useEffect } from 'react';
 import useAuthChange from "../../js/useAuthChange"
 import { Link, useNavigate } from 'react-router-dom';
+import { logo } from "../../assets"
+import { auth } from '../../lib/firebase';
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
@@ -16,6 +18,7 @@ const Navbar = () => {
   const [showAuthForm, setShowAuthForm] = useState(false)
   const [showNavigation, setShowNavigation] = useState(false)
   const windowWidth = useWindowWidth(700);
+  const currentUser = auth.currentUser
 
   const user = useAuthChange()
   const navigate = useNavigate()
@@ -38,6 +41,11 @@ const Navbar = () => {
         <h2 className="logo">
           The Craft Galleryy
         </h2>
+        <img src={logo}
+          alt="The Craft Gallery"
+          className="img_logo"
+          onClick={() => navigate("/")}
+        />
 
         <nav className={`nav_list_main_container ${isSmallScreen && showNavigation && "show_nav"}`}>
           {isSmallScreen && (
@@ -67,16 +75,28 @@ const Navbar = () => {
           </ul>
         </nav>
         <div className="nav_icons_container">
-          <AiOutlineShoppingCart className="nav_icons" />
-          <FiMenu className="nav_icons menu_icon" onClick={() => setShowNavigation(prev => !prev)} />
+          <AiOutlineShoppingCart className="nav_icons" onClick={() => navigate("/gallery")} />
           <div>
-            <button
-              className="login_btn"
-              onClick={() => user ? navigate("/profile") : handleShowForm()}
-            >
-              <FaUserCircle />
-            </button>
+            {!currentUser ? (
+              <button
+                className="login_btn"
+                onClick={() => user ? navigate("/profile") : handleShowForm()}
+              >
+                {(<FaUserCircle />)}
+              </button>
+            ) : (
+              <img
+                src={currentUser.photoURL}
+                alt={currentUser.displayName}
+                className="nav_user_img"
+                onClick={() => user ? navigate("/profile") : handleShowForm()}
+              />
+            )}
           </div>
+          <FiMenu
+            className="nav_icons menu_icon"
+            onClick={() => setShowNavigation(prev => !prev)}
+          />
         </div>
       </header>
       {showAuthForm && <LoginDialogBox handleShowForm={handleShowForm} />}

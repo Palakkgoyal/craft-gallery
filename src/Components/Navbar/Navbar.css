@@ -21,6 +21,11 @@
     cursor: pointer;
 }
 
+.img_logo {
+    width: 50px;
+    display: none;
+}
+
 .nav_list_container {
     display: flex;
     gap: 30px;
@@ -76,11 +81,13 @@
     letter-spacing: .02em;
     text-indent: 0.02em;
     transition: all .25s ease-in-out;
+    margin-top: -5px;
 }
 
 .nav_icons_container {
     display: flex;
     gap: 15px;
+    align-items: center;
 }
 
 .nav_icons:hover {
@@ -113,9 +120,28 @@
     background: #727272;
 }
 
+.nav_user_img {
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
 @media (max-width: 700px) {
+    .logo {
+        display: none;
+    }
+
+    .img_logo {
+        display: inline-block;
+    }
+
     .menu_icon {
         display: inline-block;
+        transform: scale(1.2);
+    }
+
+    .nav_icons_container {
+        gap: 22px
     }
 
     .nav_list_main_container {
@@ -133,7 +159,6 @@
     
     .show_nav {
         transform: translateX(0);
-        /* transition: s ease-in-out; */
     }
     
     .nav_list_container {

@@ -4,6 +4,7 @@ import demoImg3 from "./demo3.jpeg"
 import demoImg4 from "./demo4.jpeg"
 import ownerImg from "./owner.jpeg"
 import contactImg from "./contactImg.jpg"
+import logo from "./logo.png"
 
 export {
     demoImg,
@@ -12,4 +13,5 @@ export {
     demoImg4,
     ownerImg,
     contactImg,
+    logo,
 }

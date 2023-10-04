@@ -39,26 +39,40 @@ const GalleryComponent = () => {
                 </h2>
             </div>
             {!isFetching ? (
-                <div className="display_img_container">
+                <div className="display_img_container gallery_display_product_container">
                     {workDocuments.map(doc => (
-                        <div className="gallery_image_container display_img_box" key={doc.id}>
-                            <img
-                                src={doc.images[0]}
-                                alt={doc.name}
-                                className="display_img gallery_image"
-                                onClick={() => navigate(doc.id)}
-                            />
-                            {favArr.includes(doc.id) ? (
-                                <BsSuitHeartFill
-                                    onClick={() => handleRemoveFav(doc.id, favArr, setFavArr)}
-                                    className="display_img_set_fav_btn popup"
+                        <div className="gallery_product_container">
+                            <div className="gallery_image_container display_img_box" key={doc.id}>
+                                <img
+                                    src={doc.images[0]}
+                                    alt={doc.name}
+                                    className="display_img gallery_image"
+                                    onClick={() => navigate(doc.id)}
                                 />
-                            ) : (
-                                <BsSuitHeart
-                                    onClick={() => handleAddToFav(doc.id, favArr, setFavArr)}
-                                    className="display_img_set_fav_btn popup"
-                                />
-                            )}
+                                {favArr.includes(doc.id) ? (
+                                    <BsSuitHeartFill
+                                        onClick={() => handleRemoveFav(doc.id, favArr, setFavArr)}
+                                        className="display_img_set_fav_btn popup"
+                                    />
+                                ) : (
+                                    <BsSuitHeart
+                                        onClick={() => handleAddToFav(doc.id, favArr, setFavArr)}
+                                        className="display_img_set_fav_btn popup"
+                                    />
+                                )}
+                            </div>
+                            <div className="gallery_product_data">
+                                <h2 className="fav_name">
+                                    {doc.artName}
+                                </h2>
+                                <p>
+                                    {doc.artDetails.substring(0, 100)}
+                                    <span style={{ fontWeight: "bolder" }}>...</span>
+                                </p>
+                                <p className="product_price">
+                                    {doc.artPrice}₹
+                                </p>
+                            </div>
                         </div>
                     ))}
                 </div>

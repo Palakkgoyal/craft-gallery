@@ -4,6 +4,7 @@ import { ImCross } from "react-icons/im";
 import { auth, db, googleProvider, fbProvider, twitterProvider } from "../../lib/firebase";
 
 import { FaFacebookF } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const LoginDialogBox = ({ handleShowForm }) => {
 
@@ -43,12 +44,11 @@ export default LoginDialogBox
 
 
 function signInWithProvider(provider) {
+
   auth
     .signInWithPopup(provider)
     .then(async (val) => {
       const userRef = db.collection("users").where("uid", "==", val?.user?.uid);
-      console.log("SignIn Successfull!")
-
       const docSnap = await userRef.get();
       if (docSnap.docs.length < 1) {
         const userDoc = db.collection("users");

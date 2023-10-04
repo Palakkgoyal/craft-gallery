@@ -13,6 +13,7 @@ const ProfileComponent = () => {
         auth.signOut()
             .then(function () {
                 console.log("Sign-out successful")
+                navigate("/")
             })
             .catch(function (error) {
                 console.error(error, err)
