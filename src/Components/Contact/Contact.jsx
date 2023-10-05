@@ -56,7 +56,7 @@ const ContactComponent = () => {
         <span className="sub_para_styling contact_para">
           If you would like to book a workshop or commission a
           piece of art to your specific requirements please
-          contact Mahi on +91 9785171657
+          contact Mahi on +91 8989517165
           <p
             className="sub_para_styling contact_para"
           >

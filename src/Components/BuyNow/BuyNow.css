@@ -56,6 +56,11 @@
     display: none;
 }
 
+.old_address {
+    width: fit-content;
+    max-width: 500px;
+}
+
 @media (max-width: 600px) {
     .buy_now_product_img {
         width: 60px;

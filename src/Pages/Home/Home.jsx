@@ -1,12 +1,13 @@
 import React from 'react'
 import "./Home.css"
-import { Hero, Demo, Footer } from '../../Components'
+import { Hero, Testimonial, Footer, MoreAboutUs } from '../../Components'
 
 const Home = () => {
   return (
     <div className="home_main_container">
       <Hero />
-      <Demo />
+      <Testimonial />
+      <MoreAboutUs />
       <Footer/>
     </div>
   )
