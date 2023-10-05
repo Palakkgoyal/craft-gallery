@@ -1,7 +1,7 @@
 import ownerImg from "./owner.jpeg"
 import contactImg from "./contactImg.jpg"
 import logo from "./logo.png"
-
+import heroImg from "./hero.jpg"
 import tm1 from "./tm1.jpg"
 import tm2 from "./tm2.jpg"
 import tm3 from "./tm3.jpg"
@@ -16,6 +16,7 @@ export {
     ownerImg,
     contactImg,
     logo,
+    heroImg,
     tm1,
     tm2,
     tm3,

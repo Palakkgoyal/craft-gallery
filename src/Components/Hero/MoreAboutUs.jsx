@@ -19,6 +19,3 @@ const MoreAboutUs = () => {
 }
 
 export default MoreAboutUs
-
-// https://www.linkedin.com/in/mahi-desarla-7b4361266/
-// https://www.instagram.com/the_craft_galleryy/?igshid=YmMyMTA2M2Y%3D

@@ -1,8 +1,30 @@
 .hero_container {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     text-align: center;
     /* border: 1px solid red; */
     margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    height: 600px;
+}
+
+.hero_img_container {
+    width: 100vw;
+    margin-inline: auto;
+    /* transform: translateX(2%); */
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 100%;
+    position: absolute;
+    opacity: 0.5;
+}
+
+.hero_sub_container {
+    z-index: 3;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,8 +46,8 @@
 
 .hero_para {
     font-family: Raleway, sans-serif;
-    font-weight: 400;
-    color: #4f4e4e;
+    font-weight: 500;
+    color: #151515;
     font-size: 20px;
     line-height: 1.4em;
     letter-spacing: .01em;
@@ -93,8 +115,11 @@
     height: 100%;
 }
 
+.slider_container::-webkit-scrollbar {
+    display: none;
+}
+
 .card {
-    /* border: 2px solid; */
     width: 350px;
     height: 280px;
     display: inline-block;
@@ -127,7 +152,7 @@
 }
 
 ::-webkit-scrollbar {
-    height: 15px;
+    /* height: 15px; */
 }
 
 .iframe_container {
