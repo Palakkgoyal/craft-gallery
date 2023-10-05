@@ -1,6 +1,5 @@
 import Navbar from "./Navbar/Navbar";
 import Hero from "./Hero/Hero";
-import Demo from "./Demo/Demo";
 import Testimonial from "./Hero/Testimonial";
 import MoreAboutUs from "./Hero/MoreAboutUs";
 import Footer from "./Footer/Footer";
@@ -17,7 +16,6 @@ export {
     Hero,
     Testimonial,
     MoreAboutUs,
-    Demo,
     Footer,
     AboutComponent,
     ContactComponent,
