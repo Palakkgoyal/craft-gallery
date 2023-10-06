@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom"
 import { handleAddToFav, handleRemoveFav } from "../../js/utilityFn"
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 
+const GETPOSTCOUNT = 10;
 
 const GalleryComponent = () => {
     const [addWork, setAddWork] = useState(false)
@@ -89,6 +90,7 @@ export default GalleryComponent
 
 function useWorkData() {
     const [workDocuments, setWorkDocuments] = useState([]);
+    const [loadMorePosts, setLoadMorePosts] = useState(false);
     const isFetchingRef = useRef(true)
 
     useEffect(() => {
@@ -106,5 +108,36 @@ function useWorkData() {
         return () => { unsubscribe() };
     }, []);
 
+    // useEffect(() => {
+    //     const handleMouseScroll = (event) => {
+    //       if (
+    //         window.innerHeight + event.target.documentElement.scrollTop + 1 >=
+    //         event.target.documentElement.scrollHeight
+    //       ) {
+    //         setLoadMorePosts(true);
+    //       }
+    //     };
+    //     window.addEventListener("scroll", handleMouseScroll);
+    //     const unsubscribe = db
+    //       .collection("work")
+    //       .orderBy("desc")
+    //       .limit(PAGESIZE)
+    //       .onSnapshot((snapshot) => {
+    //         setLoadingPosts(false);
+    //         setPosts(
+    //           snapshot.docs.map((doc) => ({
+    //             id: doc.id,
+    //             post: doc.data(),
+    //           })),
+    //         );
+    //       });
+    
+    //     return () => {
+    //       window.removeEventListener("scroll", handleMouseScroll);
+    //       unsubscribe();
+    //     };
+    //   }, []);
+
     return [workDocuments, setWorkDocuments, isFetchingRef.current]
 }
+

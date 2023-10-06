@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Hero.css"
 import { heroImg } from "../../assets"
+import ActionBtn from "../ActionBtn/ActionBtn"
 
 const Hero = () => {
   return (
@@ -17,6 +18,9 @@ const Hero = () => {
           <br />
           Providing you High-quality products in affordable price.
         </p>
+        <div style={{marginTop: "30px"}}>
+          <ActionBtn text="Get Your now" />
+        </div>
       </div>
     </div>
   )

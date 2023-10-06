@@ -1,4 +1,19 @@
+.main_nav_container {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    left: 0;
+    padding: 10px 20px;
+    transition: 0.2s ease-in;
+    border-radius: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+}
+
 .nav_container {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -148,9 +163,11 @@
         position: fixed;
         top: 0;
         left: 0;
+        bottom: 0;
         box-sizing: border-box;
         width: 100%;
-        height: 100%;
+        height: 120vh;
+        overflow-y: hidden;
         background-color: rgb(62, 61, 61);
         z-index: 99999;
         transform: translateX(-100%);
@@ -165,6 +182,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        background-color: rgb(62, 61, 61);
         margin-top: 10vh;
     }
 

@@ -11,7 +11,7 @@
 .sub_container {
     max-width: 1400px;
     width: 100%;
-    padding: 10px 20px;
+    padding: 15px 20px;
 }
 
 @media (max-width: 600px) {

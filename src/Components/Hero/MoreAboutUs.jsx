@@ -2,7 +2,7 @@ import React from 'react'
 
 const MoreAboutUs = () => {
     return (
-        <div>
+        <div className="follow_main_container">
             <div>
                 <div>
                     <h2>

@@ -41,15 +41,15 @@
 /* -------------------- IMAGES COLLECTION DISPLAY ON GALLERY AND HOME PAGE ------------------ */
 
 .display_img_container {
-    columns: 3;
-    column-gap: 10px;
+    columns: 2;
+    column-gap: 40px;
     padding-block: 4vw;
     overflow: hidden;
 }
 
 .display_img_box {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
     page-break-inside: avoid; /* Firefox */
     break-inside: avoid; /* IE 10+ */
@@ -81,6 +81,16 @@
 .popup:active {
     transform: scale(0.8);
 }
+
+.glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
 
 @media (max-width: 800px){
     .display_img_container {

@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Navbar.css"
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import useAuthChange from "../../js/useAuthChange"
 import { Link, useNavigate } from 'react-router-dom';
 import { logo } from "../../assets"
@@ -19,6 +19,8 @@ const Navbar = () => {
   const [showNavigation, setShowNavigation] = useState(false)
   const windowWidth = useWindowWidth(700);
   const currentUser = auth.currentUser
+  const navRef = useRef(null)
+  useScroll(navRef)
 
   const user = useAuthChange()
   const navigate = useNavigate()
@@ -36,7 +38,7 @@ const Navbar = () => {
   }
 
   return (
-    <div>
+    <div className="main_nav_container glass" ref={navRef}>
       <header className="nav_container">
         <h2 className="logo">
           The Craft Galleryy
@@ -127,4 +129,18 @@ function useWindowWidth() {
   }, []);
 
   return windowWidth;
+}
+
+function useScroll(navRef) {
+  const lastScrollTop = useRef(0);
+  function handleScroll() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    navRef.current.style.top = scrollTop > lastScrollTop.current ? "-80px" : "0px";
+    lastScrollTop.current = scrollTop
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 }

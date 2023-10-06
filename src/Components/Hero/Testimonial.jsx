@@ -6,7 +6,7 @@ const Testimonial = () => {
     return (
         <div className="slider_main_container">
             <div className="slider__main__container">
-                <h2>
+                <h2 className="testimonial_heading">
                     Testimonials
                 </h2>
                 <div className="slider_container">
