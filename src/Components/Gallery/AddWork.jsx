@@ -3,6 +3,7 @@ import handleChange, { validateImg, uploadImage } from "../../js/utilityFn"
 import { db } from "../../lib/firebase"
 import ActionBtn from "../ActionBtn/ActionBtn"
 import Loader from "../Loader/Loader"
+import firebase from "firebase/compat/app";
 import { toast } from 'react-toastify';
 
 const AddWork = () => {
@@ -11,7 +12,6 @@ const AddWork = () => {
     const [imageUpload, setImageUpload] = useState([])
     const [isValidImage, setIsValidimage] = useState(true)
     const [artData, setArtData] = useState(initArtData)
-
     const { artName, artPrice, artDetails, materialUsed, dimensions, stripeProductId, category } = artData;
 
     function checkImg(e) {
@@ -59,7 +59,11 @@ const AddWork = () => {
         const workCollection = db.collection('work');
 
         // Data to be added to the document
-        const workData = { ...artData, images: imgUrlRef.current }
+        const workData = { 
+            ...artData, 
+            images: imgUrlRef.current,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        }
 
         // Add the document with an automatically generated ID
         workCollection.add(workData)
@@ -208,6 +212,7 @@ const AddWork = () => {
                             onChange={(e) => handleChange(e, setArtData)}
                             className="form_field add_art_input"
                             maxLength={200}
+                            minLength={5}
                             required
                             disabled={uploading}
                         />
