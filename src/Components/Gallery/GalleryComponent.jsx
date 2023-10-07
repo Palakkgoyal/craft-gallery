@@ -16,6 +16,9 @@ const GalleryComponent = () => {
     const [favArr, setFavArr] = useState([])
     const navigate = useNavigate();
 
+    let reversedWorkDocs = [...workDocuments]
+    reversedWorkDocs = reversedWorkDocs.reverse()
+
 
     useEffect(() => {
         const localFavArr = localStorage.getItem("favArr");
@@ -40,7 +43,7 @@ const GalleryComponent = () => {
                 </h2>
             </div>
             <div className="display_img_container gallery_display_product_container">
-                {workDocuments.map(doc => (
+                {reversedWorkDocs.map(doc => (
                     <div className="gallery_product_container" key={doc.id}>
                         <div className="gallery_image_container display_img_box">
                             <img
