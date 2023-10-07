@@ -12,7 +12,7 @@ const AddWork = () => {
     const [imageUpload, setImageUpload] = useState([])
     const [isValidImage, setIsValidimage] = useState(true)
     const [artData, setArtData] = useState(initArtData)
-    const { artName, artPrice, artDetails, materialUsed, dimensions, stripeProductId, category } = artData;
+    const { artName, artPrice, artDetails, dimensions, stripeProductId, category } = artData;
 
     function checkImg(e) {
         const images = e.target.files;
@@ -160,23 +160,6 @@ const AddWork = () => {
                             onChange={(e) => handleChange(e, setArtData)}
                             className="form_field add_art_input"
                             maxLength={2000}
-                            required
-                            disabled={uploading}
-                        />
-                    </div>
-                    <div className="add_art_input_container">
-                        <label htmlFor="artDetails" className="sub_para_styling add_art_input_label">
-                            Material Used
-                        </label>
-                        <textarea
-                            name="materialUsed"
-                            id="materialUsed"
-                            value={materialUsed}
-                            cols="30"
-                            rows="2"
-                            maxLength={500}
-                            onChange={(e) => handleChange(e, setArtData)}
-                            className="form_field add_art_input"
                             required
                             disabled={uploading}
                         />

@@ -111,14 +111,6 @@ const ProductComponent = () => {
               <div className="product_details">
                 <p className="product_description">
                   <span style={{ fontWeight: 500 }}>
-                    Material Used: {" "}
-                  </span>
-                  {productData.materialUsed}
-                </p>
-              </div>
-              <div className="product_details">
-                <p className="product_description">
-                  <span style={{ fontWeight: 500 }}>
                     Dimensions: {" "}
                   </span>
                   {productData.dimensions}
