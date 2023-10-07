@@ -124,10 +124,10 @@ function useWorkData() {
     //       .limit(PAGESIZE)
     //       .onSnapshot((snapshot) => {
     //         setLoadingPosts(false);
-    //         setPosts(
+    //         setWorkDocuments(
     //           snapshot.docs.map((doc) => ({
     //             id: doc.id,
-    //             post: doc.data(),
+    //             ...doc.data(),
     //           })),
     //         );
     //       });

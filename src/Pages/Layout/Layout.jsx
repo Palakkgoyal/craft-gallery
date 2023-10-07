@@ -1,5 +1,5 @@
 import "./Layout.css"
-import { Navbar } from "../../Components"
+import { Navbar, WhatsappBtn } from "../../Components"
 import { Outlet } from 'react-router-dom'
 
 const Layout = () => {
@@ -8,9 +8,12 @@ const Layout = () => {
       <div className="sub_container">
         <Navbar />
         <Outlet />
+        <WhatsappBtn />
       </div>
     </div>
   )
 }
+
+
 
 export default Layout

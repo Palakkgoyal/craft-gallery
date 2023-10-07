@@ -1,0 +1,20 @@
+.whatsapp_btn_contianer {
+    position: fixed;
+    bottom: 3vh;
+    right: 5vw;
+}
+
+.whatsapp_icon {
+    color: #075e54;
+    color: #128c7e;
+    background: white;
+    border: none;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+@media (min-width: 800px) {
+    .whatsapp_btn_contianer {
+        right: 40px;
+    }
+}

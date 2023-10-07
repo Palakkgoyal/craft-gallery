@@ -12,10 +12,8 @@
 .hero_img_container {
     width: 100vw;
     margin-inline: auto;
-    /* transform: translateX(2%); */
     left: 50%;
     transform: translateX(-50%);
-
     height: 100%;
     position: absolute;
     opacity: 0.5;
